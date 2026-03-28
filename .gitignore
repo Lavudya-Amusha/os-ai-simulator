@@ -1,0 +1,11 @@
+.streamlit/secrets.toml
+__pycache__/
+*.pyc
+*.pyo
+logs/
+*.log
+.env
+venv/
+borg_traces_data.csv
+data/borg_traces_data.csv
+data/borg_traces_data.csv

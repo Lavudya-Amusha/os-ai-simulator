@@ -1,0 +1,13 @@
+import json
+
+def log_experiment(algo, avg_wait, avg_turn, deadlock):
+
+    log = {
+        "algorithm": algo,
+        "avg_wait": avg_wait,
+        "avg_turn": avg_turn,
+        "deadlock": deadlock
+    }
+
+    with open("experiments/logs.json", "a") as f:
+        f.write(json.dumps(log) + "\n")

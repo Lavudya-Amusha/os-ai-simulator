@@ -1,0 +1,3 @@
+DATA_PATH = "data/borg_traces_data.csv"
+DEFAULT_LIMIT = 200
+DEFAULT_ITERATIONS = 100
