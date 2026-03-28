@@ -94,7 +94,14 @@ def load_borg_processes(csv_path: str, limit: int = 200) -> list:
     FileNotFoundError if csv_path does not exist.
     ValueError        if the CSV has no usable rows after cleaning.
     """
-    df = pd.read_csv(csv_path, nrows=limit)
+   df = pd.read_csv(
+    csv_path,
+    nrows=limit,
+    engine="python",
+    sep=",",
+    quoting=3,
+    on_bad_lines="skip"
+)
 
     if df.empty:
         raise ValueError(f"CSV at '{csv_path}' is empty.")
