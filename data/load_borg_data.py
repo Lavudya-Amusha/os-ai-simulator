@@ -99,8 +99,9 @@ def load_borg_processes(csv_path: str, limit: int = 200) -> list:
     nrows=limit,
     engine="python",
     sep=",",
-    quoting=3,
-    on_bad_lines="skip"
+    on_bad_lines="skip",
+    encoding="utf-8",
+    low_memory=False
 )
 
     if df.empty:
