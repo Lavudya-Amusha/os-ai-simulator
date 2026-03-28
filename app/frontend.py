@@ -4,8 +4,13 @@ Every page shares the same state. The RL agent, simulation results,
 and Banker's matrices all come from the same dataset and same session.
 Claude AI explains decisions using real data from the current session.
 """
+import sys
+import os
 
-import io, json, logging, os, urllib.request
+# 👇 ADD THIS FIRST (before custom imports)
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+import io, json, logging, urllib.request
 import matplotlib; matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
@@ -14,6 +19,7 @@ import networkx as nx
 import pandas as pd
 import streamlit as st
 
+# 👇 Your custom modules
 from core.simulator      import OSSimulator
 from core.rl_agent       import RLSchedulerAgent
 from data.load_borg_data import load_borg_processes
