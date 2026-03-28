@@ -24,6 +24,15 @@ from core.simulator      import OSSimulator
 from core.rl_agent       import RLSchedulerAgent
 from data.load_borg_data import load_borg_processes
 
+# 🔥 ADD THIS BLOCK HERE (IMPORTANT)
+DATA_PATH = "data/borg_traces_data.csv"
+DATA_URL = "https://drive.google.com/uc?id=15J410DO3CbzYcRcFv_gtYDX4KAA50LPH"
+
+if not os.path.exists(DATA_PATH):
+    os.makedirs("data", exist_ok=True)
+    st.info("Downloading dataset... please wait ⏳")
+    urllib.request.urlretrieve(DATA_URL, DATA_PATH)
+
 # ── Logging ────────────────────────────────────────────────────
 os.makedirs("logs", exist_ok=True)
 logging.basicConfig(
