@@ -78,32 +78,18 @@ def _parse_cpu_distribution(cpu_value):
 
 def load_borg_processes(csv_path: str, limit: int = 200) -> list:
     """
-    Load at most `limit` rows from the Borg CSV and return a list
-    of process dicts ready for OSSimulator.
-
-    Each dict contains
-    ------------------
-    pid      : int
-    arrival  : int    normalized to 0 – MAX_ARRIVAL_UNITS
-    burst    : int    1 – MAX_BURST  (scheduler time units)
-    priority : int    original Borg priority value
-    resource : str    "R0" … "R{NUM_RESOURCES-1}"
-
-    Raises
-    ------
-    FileNotFoundError if csv_path does not exist.
-    ValueError        if the CSV has no usable rows after cleaning.
+    Load at most `limit` rows...
     """
-   df = pd.read_csv(
-    csv_path,
-    nrows=limit,
-    engine="python",
-    sep=",",
-    on_bad_lines="skip",
-    encoding="utf-8",
-    low_memory=False
-)
 
+    df = pd.read_csv(
+        csv_path,
+        nrows=limit,
+        engine="python",
+        sep=",",
+        on_bad_lines="skip",
+        encoding="utf-8",
+        low_memory=False
+    )
     if df.empty:
         raise ValueError(f"CSV at '{csv_path}' is empty.")
 
