@@ -81,15 +81,17 @@ def load_borg_processes(csv_path: str, limit: int = 200) -> list:
     Load at most `limit` rows...
     """
 
+    try:
     df = pd.read_csv(
         csv_path,
         nrows=limit,
         engine="python",
         sep=",",
         on_bad_lines="skip",
-        encoding="utf-8",
-        low_memory=False
+        encoding="utf-8"
     )
+except Exception as e:
+    raise ValueError(f"Failed to load dataset: {e}")
     if df.empty:
         raise ValueError(f"CSV at '{csv_path}' is empty.")
 
